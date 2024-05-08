@@ -1,0 +1,85 @@
+\title{41321 hand-in 3:\\Exercise on Imbibition}
+\author{
+    Victor Lier\\s204389
+}
+
+\newcommand{\Gruppe}{Group 2}
+
+\documentclass[12pt]{article}
+\usepackage[hidelinks, pdfusetitle, pdfsubject={Complex Flows}, pdfkeywords={Imbibition}]{hyperref} %Emne og kodeord
+
+\date{\today}
+\usepackage[tmargin=1.25in, bmargin=1in, head=15pt]{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+\usepackage{subcaption}
+\usepackage{adjustbox}
+
+\usepackage{biblatex}
+\addbibresource{References.bib}
+
+\usepackage[separate-uncertainty = true,multi-part-units=single]{siunitx}
+\sisetup{range-phrase= - }
+\sisetup{range-units=single}
+
+\usepackage{listings}
+\lstset{
+  basicstyle=\ttfamily,
+  columns=fullflexible,
+  frame=single,
+  breaklines=true,
+  postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows,calc,decorations.markings}
+\tikzset{every picture/.style={line width=0.8}}
+\tikzstyle{force}   = [very thick,-latex, ->]
+
+\usepackage{tikz-3dplot}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.6}
+\pgfplotsset{
+    legend image with text/.style={
+        legend image code/.code={%
+            \node[anchor=center] at (0.3cm,0cm) {#1};
+        }
+    },
+}
+
+\pagenumbering{Roman}
+
+\listfiles
+
+% Header
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\nouppercase{\leftmark}}
+\fancyhead[R]{\nouppercase{\thepage}}
+
+\begin{document}
+
+\newgeometry{bottom=2cm, top=1.5cm, head=0pt}
+\begin{titlepage}
+\include{0/Titlepage}
+\end{titlepage}
+
+\restoregeometry
+
+\tableofcontents
+\clearpage
+
+\pagenumbering{arabic}
+
+\include{Text}
+
+\clearpage
+\printbibliography[heading=bibintoc]
+
+\include{Appendices}
+
+\end{document}
