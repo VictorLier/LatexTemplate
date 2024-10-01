@@ -7,7 +7,7 @@
 \newcommand{\Gruppe}{Group 2}   % Group number
 
 \documentclass[12pt]{article}
-\usepackage[hidelinks, pdfusetitle, pdfsubject={Complex Flows}, pdfkeywords={Imbibition}]{hyperref} %Subject and keywords
+\usepackage[hidelinks, pdfusetitle, pdfsubject={}, pdfkeywords={}]{hyperref} %Subject and keywords
 
 \date{\today}
 \usepackage[T1]{fontenc}    % 8 bit characters
@@ -20,11 +20,11 @@
 \usepackage{chngpage}   % Adjustwidth
 \usepackage{amsmath}    % Math
 
-\usepackage{biblatex}   % Refrences
+\usepackage[sorting=none]{biblatex}   % Refrences
 \addbibresource{References.bib}
 
 \usepackage[separate-uncertainty = true,multi-part-units=single]{siunitx}   % Si units
-\sisetup{range-phrase= - }
+%\sisetup{range-phrase= - }
 \sisetup{range-units=single}
 
 \usepackage{listings}   % Showing code
@@ -38,12 +38,13 @@
 
 \usepackage{tikz}   % 2D graphics
 \usetikzlibrary{arrows,calc,decorations.markings}
-\tikzset{every picture/.style={line width=0.8}}
+%\tikzset{every picture/.style={line width=0.8}}
 \tikzstyle{force}   = [very thick,-latex, ->]
 \tikzstyle{dim}     = [thick, -latex, |<->|]
 
 \usepackage{pgfplots}   % Plots
-\pgfplotsset{compat=1.6}
+\pgfplotsset{compat=1.8}
+\pgfplotsset{every axis plot/.style={semithick}}
 \pgfplotsset{
     legend image with text/.style={
         legend image code/.code={%
@@ -53,6 +54,7 @@
 }
 
 % DTU colors
+\definecolor{DTU}{HTML}{990000}
 \definecolor{DTU-Blue}{HTML}{2F3EEA}
 \definecolor{DTU-BrightGreen}{HTML}{1FD082}
 \definecolor{DTU-NavyBlue}{HTML}{030F4F}
