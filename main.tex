@@ -23,13 +23,25 @@
 \usepackage[sorting=none]{biblatex}   % Refrences
 \addbibresource{References.bib}
 
-\usepackage[separate-uncertainty = true,multi-part-units=single]{siunitx}   % Si units
-%\sisetup{range-phrase= - }
-\sisetup{range-units=single}
+\usepackage{siunitx}   % Si units
+\sisetup{
+mode = math,
+separate-uncertainty-units = single,
+range-phrase = \text{ ; },
+range-units = brackets,
+range-open-bracket = [ ,
+range-close-bracket = ] ,
+list-units = brackets,
+list-open-bracket = \{,
+list-close-bracket = \},
+list-separator = {, },
+list-final-separator = {, },
+exponent-product = \cdot,
+}
 
 \usepackage{listings}   % Showing code
 \lstset{
-  basicstyle=\ttfamily,
+%  basicstyle=\ttfamily,
   columns=fullflexible,
   frame=single,
   breaklines=true,
@@ -52,6 +64,9 @@
         }
     },
 }
+
+\usetikzlibrary{external}
+\tikzexternalize[prefix=tikz/]
 
 % DTU colors
 \definecolor{DTU}{HTML}{990000}
