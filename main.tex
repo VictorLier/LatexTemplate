@@ -12,12 +12,14 @@
 \date{\today}
 \usepackage[T1]{fontenc}    % 8 bit characters
 \usepackage[tmargin=1.25in, bmargin=1in, head=15pt]{geometry}   % Bigger top and bottom margins
-\usepackage{graphicx}   % To show images
-\usepackage{microtype}  % Small changes to text - Looks nice
-\usepackage{booktabs}   % Nice tables
-\usepackage{fancyhdr}   % Header package
-\usepackage{subcaption} % Multifigures
-\usepackage{amsmath}    % Math
+\usepackage{graphicx}       % To show images
+\usepackage{microtype}      % Small changes to text - Looks nice
+\usepackage{booktabs}       % Nice tables
+\usepackage{fancyhdr}       % Header package
+\usepackage{subcaption}     % Multifigures
+\usepackage{amsmath}        % Math
+\usepackage[intoc]{nomencl}    %Nommenclature
+\makenomenclature
 
 \usepackage[sorting=none]{biblatex}   % Refrences
 \addbibresource{References.bib}
@@ -113,6 +115,9 @@ ylabel style ={rotate=-90},
 \pagenumbering{arabic}
 
 \include{Text}
+
+\clearpage
+\printnomenclature
 
 \clearpage
 \printbibliography[heading=bibintoc]
