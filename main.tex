@@ -17,7 +17,6 @@
 \usepackage{booktabs}   % Nice tables
 \usepackage{fancyhdr}   % Header package
 \usepackage{subcaption} % Multifigures
-\usepackage{chngpage}   % Adjustwidth
 \usepackage{amsmath}    % Math
 
 \usepackage[sorting=none]{biblatex}   % Refrences
@@ -26,22 +25,11 @@
 \usepackage{siunitx}   % Si units
 \sisetup{
 mode = math,
-separate-uncertainty-units = single,
-range-phrase = \text{ ; },
-range-units = brackets,
-range-open-bracket = [ ,
-range-close-bracket = ] ,
-list-units = brackets,
-list-open-bracket = \{,
-list-close-bracket = \},
-list-separator = {, },
-list-final-separator = {, },
 exponent-product = \cdot,
 }
 
 \usepackage{listings}   % Showing code
 \lstset{
-%  basicstyle=\ttfamily,
   columns=fullflexible,
   frame=single,
   breaklines=true,
@@ -56,6 +44,13 @@ exponent-product = \cdot,
 
 \usepackage{pgfplots}   % Plots
 \pgfplotsset{compat=1.8}
+\pgfplotsset{
+scale only axis,
+width=1\linewidth,
+height=0.3\linewidth,
+grid=major,
+ylabel style ={rotate=-90},
+}
 \pgfplotsset{every axis plot/.style={semithick}}
 \pgfplotsset{
     legend image with text/.style={
@@ -64,6 +59,9 @@ exponent-product = \cdot,
         }
     },
 }
+\usepgfplotslibrary{groupplots}
+
+% \makebox[\linewidth][l]{\input{5/Combined}}
 
 \usetikzlibrary{external}
 \tikzexternalize[prefix=tikz/]
@@ -101,7 +99,15 @@ exponent-product = \cdot,
 
 \restoregeometry
 
+\begin{abstract}
+    This is the abstract of this report
+\end{abstract}
+
 \tableofcontents
+\clearpage
+
+\listoffigures
+\listoftables
 \clearpage
 
 \pagenumbering{arabic}
