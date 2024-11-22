@@ -1,6 +1,6 @@
 \title{xxxxxx}    % Insert title
 \author{
-    xxxxxx\\xxxxx    % insert author - use \and for more than one
+    Victor Lier\\s204389    % insert author - use \and for more than one
     %\and
 }
 
@@ -18,8 +18,40 @@
 \usepackage{fancyhdr}       % Header package
 \usepackage{subcaption}     % Multifigures
 \usepackage{amsmath}        % Math
-\usepackage[intoc]{nomencl}    %Nommenclature
-\makenomenclature
+
+\usepackage[toc, acronym]{glossaries}        %Glossary - Shows in toc
+\usepackage{glossary-longbooktabs}  %Glossary style
+\glsaddkey % Add units
+{unit}
+{}
+{\glsentryunit}
+{\Glsentryunit}
+{\glsunit}
+{\Glsunit}
+{\GLSunit}
+\glssetnoexpandfield{unit}
+\makeglossaries % Create glossary
+\loadglsentries{Glossary.tex} % Load glossaries from file
+\newglossarystyle{mystyle}{% Create new style
+\setglossarystyle{altlong4col-booktabs}% Start from this style
+\setlength{\tabcolsep}{0.0125\textwidth}%
+\renewenvironment{theglossary}% Change symbol and unit to centering
+{\begin{longtable}{>{\centering\arraybackslash}p{0.09\textwidth}p{0.55\textwidth}>{\centering\arraybackslash}p{0.17\textwidth}p{0.09\textwidth}}}%
+{\end{longtable}}%
+\renewcommand*{\glossaryheader}{% Edit header names
+\toprule \bfseries Symbol &
+\bfseries Description &
+\bfseries Unit/Value &
+\bfseries Page
+\tabularnewline\midrule\endhead
+\bottomrule\endfoot}%
+\renewcommand{\glossentry}[2]{% Edit wich symbols/values are shown in the table
+\glsentryitem{##1}\glstarget{##1}{\glossentrysymbol{##1}} &
+\glossentrydesc{##1} &
+\glsentryunit{##1} &
+##2\tabularnewline
+}%
+}
 
 \usepackage[sorting=none]{biblatex}   % Refrences
 \addbibresource{References.bib}
@@ -30,21 +62,13 @@ mode = math,
 exponent-product = \cdot,
 }
 
-\usepackage{listings}   % Showing code
-\lstset{
-  columns=fullflexible,
-  frame=single,
-  breaklines=true,
-  postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
-}
-
 \usepackage{tikz}   % 2D graphics
 \usetikzlibrary{arrows,calc,decorations.markings}
 %\tikzset{every picture/.style={line width=0.8}}
 \tikzstyle{force}   = [very thick,-latex, ->]
 \tikzstyle{dim}     = [thick, -latex, |<->|]
 
-\usepackage{pgfplots}   % Plots
+\usepackage{pgfplots}   % Plots % \makebox[\linewidth][l]{\input{5/Combined}}
 \pgfplotsset{compat=1.8}
 \pgfplotsset{
 scale only axis,
@@ -62,12 +86,9 @@ ylabel style ={rotate=-90},
     },
 }
 \usepgfplotslibrary{groupplots}
-
-% \makebox[\linewidth][l]{\input{5/Combined}}
-
+%Externalize figures - outcomment on final pass
 \usetikzlibrary{external}
 \tikzexternalize[prefix=tikz/]
-
 % DTU colors
 \definecolor{DTU}{HTML}{990000}
 \definecolor{DTU-Blue}{HTML}{2F3EEA}
@@ -80,6 +101,37 @@ ylabel style ={rotate=-90},
 \definecolor{DTU-Red}{HTML}{E83F48}
 \definecolor{DTU-Green}{HTML}{008835}
 \definecolor{DTU-Purple}{HTML}{79238E}
+\pgfplotsset{
+cycle list={
+{black},
+{DTU},
+{DTU-Blue},
+{DTU-BrightGreen},
+{DTU-Yellow},
+{DTU-Orange},
+{DTU-Pink},
+{DTU-Grey},
+{DTU-Red},
+{DTU-Green},
+{DTU-Purple},
+{DTU-NavyBlue},
+}}
+
+\usepackage{listings}   % Showing code
+\lstset{
+    language=Python,
+    basicstyle=\ttfamily,
+    keywordstyle={\color{DTU-Blue}},
+    keywordstyle=[2]{\color{DTU-BrightGreen}},
+    keywordstyle=[3]{\color{DTU-NavyBlue}},
+    commentstyle={\color{DTU-Green}},
+    columns=fullflexible,
+    frame=single,
+    breaklines=true,
+    postbreak=\mbox{\textcolor{DTU}{$\hookrightarrow$}\space},
+    numbers=left,
+}
+
 
 
 \pagenumbering{Roman}
@@ -106,7 +158,6 @@ ylabel style ={rotate=-90},
 \end{abstract}
 
 \tableofcontents
-\clearpage
 
 \listoffigures
 \listoftables
@@ -117,7 +168,8 @@ ylabel style ={rotate=-90},
 \include{Text}
 
 \clearpage
-\printnomenclature
+\printacronyms[style=listgroup]
+\printglossary[style=mystyle]
 
 \clearpage
 \printbibliography[heading=bibintoc]
