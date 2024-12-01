@@ -6,7 +6,7 @@
 
 \newcommand{\Gruppe}{Group 2}   % Group number
 
-\documentclass[12pt]{article}
+\documentclass[12pt, a4paper]{article}
 \usepackage[hidelinks, pdfusetitle, pdfsubject={}, pdfkeywords={}]{hyperref} %Subject and keywords
 
 \date{\today}
@@ -84,6 +84,12 @@ ylabel style ={rotate=-90},
             \node[anchor=center] at (0.3cm,0cm) {#1};
         }
     },
+}
+\pgfplotsset{ % Addeds text to title such that subcaptions work
+    every axis title/.append style={
+        text width=\linewidth,  % Set the width for all titles
+        align=center     % Center-align the text within the width
+    }
 }
 \usepgfplotslibrary{groupplots}
 %Externalize figures - outcomment on final pass
