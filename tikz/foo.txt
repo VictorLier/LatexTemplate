@@ -1,0 +1,11 @@
+\begin{tikzpicture}[trim axis left, trim axis right]
+\begin{axis}[
+xlabel={},
+ylabe={}
+]
+
+\addplot[] table[] {1/data/consumption_1.txt};
+\addlegendentry{}
+
+\end{axis}
+\end{tikzpicture}
