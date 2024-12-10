@@ -1,4 +1,4 @@
-# 1. If you use the glossaries or the glossaries-extra package, then you can use:
+# This is for the glossaries package
 
    add_cus_dep( 'acn', 'acr', 0, 'makeglossaries' );
    add_cus_dep( 'glo', 'gls', 0, 'makeglossaries' );
